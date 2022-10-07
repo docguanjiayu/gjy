@@ -1,15 +1,93 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
+ 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+ 
+    <style>
+        #box_text {
+            border: #fc00ff solid 2px;
+            margin-left: 200px;
+            margin-top: 100px;
+        }
+        
+        .span1 {
+            width: 100px;
+            height: 130px;
+            background-color: pink;
+        }
+        
+        .box_1 {
+            width: 100px;
+            height: 130px;
+            background-color: pink;
+        }
+        
+        .text1 {
+            margin-left: 20px;
+            background: #7b738e;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .btn1 {
+            background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);
+            margin: 0;
+        }
+        
+        li {
+            font-weight: 700;
+            background-color: pink;
+            padding: 5px;
+            margin: 5px;
+        }
+        
+        li a {
+            float: right;
+        }
+    </style>
 </head>
-
+ 
 <body>
-    <h1>hello wferewr  rewrworld</h1>
+    <button class="btn1" width="200px">发布</button>
+ 
+    <div id="box_text">
+        <textarea name="" class="text1" cols="30" rows="1" placeholder="你可以在这里输入对课程的简单看法（30字以内）：" maxLength=30></textarea>
+        <ul>
+            <!-- <li class="talks"></li> -->
+        </ul>
+ 
+    </div>
+    <script>
+        // 获取各个标签
+        var btn = document.querySelector('button');
+        var text = document.querySelector('textarea');
+        var ul = document.querySelector('ul');
+        //注册事件
+        btn.onclick = function() {
+            if (text.value == "") {
+                alert("请输入文本内容后再点击发布按钮");
+            } else {
+                // 创建元素
+                var li = document.createElement('li');
+                li.innerHTML = text.value + "<a href='javascript:;'>删除</a>";
+                //添加元素
+                // ul.appendChild(li);用于先发布就显示在最前面
+                ul.insertBefore(li, ul.children[0]);
+                var as = document.querySelectorAll('a');
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function() {
+                        ul.removeChild(this.parentNode);
+                    }
+                }
+            }
+        }
+    </script>
 </body>
-
+ 
 </html>
 Footer
 © 2022 GitHub, Inc.
