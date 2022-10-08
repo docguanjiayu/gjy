@@ -1,142 +1,110 @@
-html,
+@font-face {
+    font-family: 'iconfont';
+    /* Project id 2680005 */
+    src: url('//at.alicdn.com/t/font_2680005_2v81j5og00f.woff2?t=1626424842361') format('woff2'),
+        url('//at.alicdn.com/t/font_2680005_2v81j5og00f.woff?t=1626424842361') format('woff'),
+        url('//at.alicdn.com/t/font_2680005_2v81j5og00f.ttf?t=1626424842361') format('truetype');
+}
+
 body {
-    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-#box {
-    height: 80%;
-    width: 50%;
-    position: absolute;
-    left: 25%;
-    top: 10%;
-    background-color: gray;
+* {
+    box-sizing: border-box;
 }
 
-#top {
-    position: absolute;
+.myhead {
     background-color: black;
-    height: 7%;
-    width: 100%;
-    color: white;
-}
-
-#top span:nth-child(1) {
-    margin-left: 10%;
-    margin-top: 1%;
-    display: inline-block;
-}
-
-#top span:nth-child(2) button {
-    margin-left: 45%;
-    margin-top: 1%;
-    /* 行内块级元素      */
-    display: inline-block;
-    width: 12%;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#doing {
-    position: absolute;
-    /* background-color: greenyellow; */
-    top: 12%;
-    left: 12%;
-    height: 15%;
-    width: 80%;
-    font-weight: bold;
-}
-
-#doing_content {
-    position: absolute;
-    height: 40%;
-    width: 100%;
-    background-color: rgb(213, 225, 228);
-    top: 45%;
-}
-
-#input_checkbox {
-    height: 17px;
-    width: 17px;
-    position: relative;
-    top: 4px;
-}
-
-#manage {
-    position: absolute;
-    height: 40%;
-    width: 80%;
-    background-color: rgb(177, 177, 158);
-    top: 32%;
-    left: 12%;
-    font-weight: bold;
-    overflow-y: scroll;
-}
-
-#bottom {
-    position: absolute;
-    height: 5%;
-    width: 100%;
-    background-color: gray;
-    bottom: 0%;
     text-align: center;
+    padding: 5px 0px 10px 30px;
+    color: #ac177b;
 }
 
-#addContent {
-    position: absolute;
-    height: 58%;
-    width: 70%;
-    left: 20%;
-    top: 30%;
-    background-color: rgb(116, 186, 233);
-    display: none;
+table {
+    margin: 0 auto;
 }
 
-li {
-    list-style-type: none;
-    height: 20px;
-    width: 80%;
+#things {
+    width: 180px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: solid 1px #ac177b;
+}
+
+#add {
+    display: inline-block;
+    width: 80px;
+    height: 30px;
     background-color: gainsboro;
-    margin-top: 10px;
-    font-weight: lighter;
+    color: black;
+    border-radius: 3px;
+    line-height: 30px;
+}
+
+#add:hover {
+    /*:hover把鼠标放在链接上的状态*/
     cursor: pointer;
+    background-color: darkgrey;
+    color: grey;
 }
 
-#show_data {
-    position: absolute;
-    height: 90%;
-    width: 100%;
-    background-color: rgb(125, 219, 248);
-    top: 10%;
-    left: 0%;
-    /* display: none; */
-    overflow-y: scroll;
+ul {
+    margin: 0px;
+    padding: 0px;
 }
 
-#cover_show_data {
-    position: absolute;
-    height: 48%;
-    width: 50%;
-    background-color: rgb(220, 239, 245);
-    top: 25%;
-    left: 42%;
-    display: none;
+ul li {
+    list-style: none;
+    /*text-align: center;*/
+    position: relative;
+    padding-left: 40px;
+    height: 40px;
+    line-height: 40px;
 }
 
-#img {
-    position: absolute;
-    top: 0;
-    right: 1%;
-    height: 9%;
-    width: 7%;
-    background-color: red;
+ul li:nth-child(odd) {
+    background-color: #f9f9f9;
 }
 
-#img:hover {
-    background-color: rgb(248, 124, 155);
-}
-
-#img img {
-    height: 20px;
-    width: 23px;
+ul li:hover {
     cursor: pointer;
+    background-color: #dddddd;
+}
+
+ul li.check {
+    /*选择所有选中的表单元素*/
+    background-color: #888888;
+    text-decoration: line-through;
+    color: #f9f9f9;
+}
+
+ul li.check::before {
+    /*:before在每个<p>元素之前插入内容*/
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+.close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 0px 20px;
+    font-size: 16px;
+}
+
+.close:hover {
+    background-color: #f44336;
+    color: white;
 }
