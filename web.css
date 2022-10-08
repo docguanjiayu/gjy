@@ -1,0 +1,142 @@
+html,
+body {
+    height: 100%;
+}
+
+#box {
+    height: 80%;
+    width: 50%;
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    background-color: gray;
+}
+
+#top {
+    position: absolute;
+    background-color: black;
+    height: 7%;
+    width: 100%;
+    color: white;
+}
+
+#top span:nth-child(1) {
+    margin-left: 10%;
+    margin-top: 1%;
+    display: inline-block;
+}
+
+#top span:nth-child(2) button {
+    margin-left: 45%;
+    margin-top: 1%;
+    /* 行内块级元素      */
+    display: inline-block;
+    width: 12%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#doing {
+    position: absolute;
+    /* background-color: greenyellow; */
+    top: 12%;
+    left: 12%;
+    height: 15%;
+    width: 80%;
+    font-weight: bold;
+}
+
+#doing_content {
+    position: absolute;
+    height: 40%;
+    width: 100%;
+    background-color: rgb(213, 225, 228);
+    top: 45%;
+}
+
+#input_checkbox {
+    height: 17px;
+    width: 17px;
+    position: relative;
+    top: 4px;
+}
+
+#manage {
+    position: absolute;
+    height: 40%;
+    width: 80%;
+    background-color: rgb(177, 177, 158);
+    top: 32%;
+    left: 12%;
+    font-weight: bold;
+    overflow-y: scroll;
+}
+
+#bottom {
+    position: absolute;
+    height: 5%;
+    width: 100%;
+    background-color: gray;
+    bottom: 0%;
+    text-align: center;
+}
+
+#addContent {
+    position: absolute;
+    height: 58%;
+    width: 70%;
+    left: 20%;
+    top: 30%;
+    background-color: rgb(116, 186, 233);
+    display: none;
+}
+
+li {
+    list-style-type: none;
+    height: 20px;
+    width: 80%;
+    background-color: gainsboro;
+    margin-top: 10px;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+#show_data {
+    position: absolute;
+    height: 90%;
+    width: 100%;
+    background-color: rgb(125, 219, 248);
+    top: 10%;
+    left: 0%;
+    /* display: none; */
+    overflow-y: scroll;
+}
+
+#cover_show_data {
+    position: absolute;
+    height: 48%;
+    width: 50%;
+    background-color: rgb(220, 239, 245);
+    top: 25%;
+    left: 42%;
+    display: none;
+}
+
+#img {
+    position: absolute;
+    top: 0;
+    right: 1%;
+    height: 9%;
+    width: 7%;
+    background-color: red;
+}
+
+#img:hover {
+    background-color: rgb(248, 124, 155);
+}
+
+#img img {
+    height: 20px;
+    width: 23px;
+    cursor: pointer;
+}
