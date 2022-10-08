@@ -1,160 +1,90 @@
-//对底部进行年份的更新
-var year = document.getElementById("bottom_span");
-var tody = new Date();
-year.innerHTML = "Copyright@ " + tody.getFullYear() + " todolist.cn";
+//1.在每个span后面添加close节点
+var myNodelist = document.getElementsByTagName("li")//返回带有指定标签名的对象的集合  getElementsByTagName()可以获取任何类型的html元素列表
 
-//点击添加事项时弹窗编辑框
-function add() {
-    var thing = document.getElementById("top_button");
-    var add = document.getElementById("addContent");
-    thing.onclick = function () {
-        add.style.display = "block";
-    }
-}
-// 点击关闭按钮时关闭编辑框        
-function close() {
-    var close = document.getElementById("close");
-    var add = document.getElementById("addContent");
-    var textarea = document.getElementById("textarea");
-    //这里获取textarea中内容只能使用value，不能使用innerHTML
-    close.onclick = function () {
-        textarea.value = null;
-        add.style.display = "none";
-    }
+for (var i = 0; i < myNodelist.length; i++) {
+    var span = document.createElement("span");
+    /*
+    document.createElement(tagName,[options]);
+    该方法用创建一个标签名为tagName的指定标签元素。
+    参数：
+    tagName:指定要创建的元素类型的字符串，再html文档上调用createElement()方法创建元素之前会将tagName转化成小写
+    options:一个可选的参数ElementCreationOptions是包含一个属性为is的对象，该对象的值是用customElements.define()方法定义过的一个自定义元素的标签名。
+     */
+
+    var txt = document.createTextNode("\u00D7");
+    /*
+    document.createTextNode("\u00D7");
+    创建一个新的文本节点
+     */
+    span.className = "close";
+    span.appendChild(txt);
+    /*
+    .appendChild(node)
+    向节点添加最后一个子节点
+    参数：node是必须的，希望添加的节点对象
+     */
+    myNodelist[i].appendChild(span);
+
 }
 
-//不能这样使用count，每次重新加载count的值都是从1开始
-// var count = 1;
-var j;
-var count;
-//点击保存按钮对编辑的内容存入浏览器本地
-function save() {
-    var save = document.getElementById("save");
-    //获取编辑框中的内容
-    var content = document.getElementById("textarea").value;
-    //以浏览器的数据条数作为计数
-    count = localStorage.length + 1;
-    var key_number = count + "_data";
-    console.log("数据条数=" + count);
-    save.onclick = function () {
-        // 如果编辑框内的内容不为空
-        if (content != null && content != "" && content != undefined) {
-            //存入数据                
-            localStorage.setItem(key_number, content);
-        }
-        //删除展示数据列表当中的所有数据
-        deleteChild();
-        //删除后再对本地浏览器进行一次查询将所有数据展示出来
-        showManage();
+//2.处理删除事件
+var close = document.getElementsByClassName("close")
+for (var i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+        //parentElement表示返回当前节点的父元素节点
+        var div = this.parentElement
+        div.style.display = "none"
     }
 }
 
-//删除展示数据列表当中的所有数据
-function deleteChild() {
-    var div = document.getElementById("manage");
-    // 获取div下的所有子元素
-    var all_child = div.childNodes;
-    for (j = all_child.length - 1; j > 1; j--) {
-        div.removeChild(all_child[j]);
+//3.处理任务完成事件
+var list = document.querySelector("ul")
+/*
+document.querySelector(selectors);
+文档对象模型Document引用的querySelector()方法返回文档中与指定选择器或选择器组匹配的第一个Element对象，如果找不到匹配项则返回null。
+selectors:包含一个或多个要匹配的选择器的DOM字符串DOMString。该字符串必须是有效的CSS选择器字符串，如果不是则引发异常。
+ */
+console.log(list)
+list.addEventListener('click', function (ev) {
+    //event.target属性可以用来实现事件委托，例如将事件绑定在ul上，但是点击li时可以被触发
+    //tagName是获取元素的标签名，返回事件的大写标签
+    if (ev.target.tagName === 'LI') {
+        //toggle方法是在元素中切换类名，在被选元素上进行hide（）和show（）之间的切换
+        //classList对元素的class继续操作
+        ev.target.classList.toggle('check')
     }
-}
+}, false);
 
-var i;
-var manage = document.getElementById("manage");
-// 对已经完成的事件展示在下方列表中
-function showManage() {
-    // 获取存于浏览器本地的数据
-    var length = localStorage.length;
-    var key;
-    for (i = 0; i < length; i++) {
-        //键值
-        key = i + 1 + "_data";
-        if (localStorage.getItem(key) != null) {
-            //获取对应键值的内容 不存在键值的话会返回一个null
-            key_data = localStorage.getItem(key);
-            // 获取key_data中的标题
-            var title = (key_data.split("\n"))[0];
-            // 获取创建的日期
-            var endDate = getDate();
-            title = title + "           " + endDate;
-            //可以输出分隔符"    "
-            console.log("title=" + title);
-            // 创建元素节点
-            var node = document.createElement("li");
-            // 对每一个<li>元素赋予唯一的id
-            node.id = key;
-            // 新建文本节点
-            var textnode = document.createTextNode(title);
-            node.appendChild(textnode);
-            // 创建新的元素列表
-            manage.appendChild(node);
+//4.处理点击add按钮，列表中添加一个待办事项
+
+function addElement() {
+    var things = document.getElementById('things').value
+
+    // alert(localStorage.setItem("mutodolist",JSON.stringify(things)))
+
+    var li = document.createElement('li')
+
+    var t = document.createTextNode(things)
+
+    if (things == '') {
+        alert("请输入待办事件")
+    }
+    else {
+        list.appendChild(li)
+        li.appendChild(t)
+    }
+
+    var span = document.createElement('span')
+    var txt = document.createTextNode('\u00D7')
+
+    span.className = 'close'
+    span.appendChild(txt)
+    li.appendChild(span)
+
+    for (var i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+            var div = this.parentElement
+            div.style.display = "none"
         }
     }
 }
-
-// 获取日期
-function getDate() {
-    var d = new Date();
-    var year = d.getFullYear();
-    var month = d.getMonth();
-    var day = d.getDay();
-    var end_Date = year + "/" + month + "/" + day;
-    return end_Date;
-}
-
-
-// 更新正在进行下方的内容
-function update_doing() {
-    //获取编辑框中的内容
-    var content = document.getElementById("textarea").value;
-    //  用一个换行符将字符串进行分割 返回一个字符串数组
-    var arr = content.split("\n");
-    //获取第一行内容 (标题)
-    var title = arr[0];
-    //替换正在进行的内容
-    var update_content = document.getElementById("update_content");
-    update_content.innerHTML = title;
-}
-
-
-// 双击完成的列表中的任务会显示具体内容
-function showListContent() {
-    //添加一个双击事件
-    document.body.addEventListener("dblclick", function (e) {
-        event = e.srcElement ? e.srcElement : e.target;
-        // console.log("event="+event);                
-        if (event.tagName == "LI") {
-            //获取该元素的id
-            key_id = event.id;
-            // 数据内容
-            data = localStorage.getItem(key_id);
-            // 展示数据内容
-            var show = document.getElementById("show_data");
-            var cover_show_data = document.getElementById("cover_show_data");
-            show.innerHTML = data;
-            cover_show_data.style.display = "block";
-        }
-    })
-}
-
-// 对展示的数据进行关闭
-function closeList() {
-    var clear_img = document.getElementById("clear_img");
-    var cover_show_data = document.getElementById("cover_show_data");
-    clear_img.onclick = function () {
-        cover_show_data.style.display = "none";
-    }
-}
-
-function execute() {
-    add();
-    update_doing();
-    save();
-    close();
-    showListContent();
-    closeList();
-}
-// 清除本地浏览器所有内容
-// localStorage.clear();
-// console.log("本地浏览器数据条数："+localStorage.length);
-setInterval(execute, 2000);
