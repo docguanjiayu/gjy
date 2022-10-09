@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的记事本</title>-
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">我的笔记</a>
+        <a href="#">退出</a>
+
+    </div>
+
+    <div id="main">
+
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+    </div>
+
+    <div class="myhead">
+        <h2>我的笔记</h2>
+
+        <table>
+            <tr>
+                <td>
+                    <input type="text" id="things" placeholder="请输入待办事项">
+                </td>
+                <td>
+
+                    <span id="add" onclick="addElement()">add</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <ul>
+        <li>Hit the gym</li>
+        <li class="checked">Pay bills</li>
+        <li>Meet George</li>
+    </ul>
+
+
+
+
+</body>
+<script src="marked.min.js"></script>
+<script src="js/index.js" type="text/javascript"></script>
+
+</html>
