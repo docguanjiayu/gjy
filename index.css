@@ -1,0 +1,165 @@
+.sidenav {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+.myhead {
+    text-align: center;
+    padding: 5px 0px 10px 30px;
+    color: #13020e;
+}
+
+table {
+    margin: 0 auto;
+}
+
+#thing {
+    width: 180px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: solid 1px #13020e;
+}
+
+#add {
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    background-color: gainsboro;
+    color: black;
+    border-radius: 3px;
+    line-height: 30px;
+}
+
+#add:hover {
+    /*:hover把鼠标放在链接上的状态*/
+    cursor: pointer;
+    background-color: darkgrey;
+    color: grey;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul li {
+    list-style: none;
+    /*text-align: center;*/
+    position: relative;
+    padding-left: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+
+ul li:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+ul li:hover {
+    cursor: pointer;
+    background-color: #dddddd;
+}
+
+ul li.check {
+    /*选择所有选中的表单元素*/
+    background-color: #888888;
+    text-decoration: line-through;
+    color: #f9f9f9;
+}
+
+ul li.check::before {
+    /*:before在每个<p>元素之前插入内容*/
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+.close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 0px 20px;
+    font-size: 16px;
+}
+
+.close:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
